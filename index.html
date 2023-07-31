@@ -13,11 +13,11 @@
                 <nav>
                     <img src="" class="logo">
                     <ul id="sidemenu">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#header">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
                         <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
                     </ul>
                     <i class="fa-solid fa-bars" onclick="openmenu()"></i>
@@ -162,12 +162,13 @@
                 <a href="#" download class="btn btn2">Download CV</a>
             </div>
             <div class="contect-right">
-                <form>
+                <form name="submit-to-google-sheet">
                     <input type="text" name="Name" placeholder="Your Name" required>
                     <input type="email" name="email" placeholder="Your Email" required>
                     <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
                     <button type="submit" class="btn btn2">Submit</button>
                 </form>
+                <span id="message"></span>
             </div>
         </div>
     </div>
@@ -203,5 +204,22 @@
                 sidemenu.style.right="-200";
             }
         </script>
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyHoSHKB0neX6-Id4WcJ5ehdoVpD3KAcqZipRiaeJfWR7yo_VeNscbss59Fwi2YeDk7hw/exec'
+            const form = document.forms['submit-to-google-sheet']
+            const message = document.getElementById("message")
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    message.innerHTML = "Message sent successfully"
+                    setTimeout(function(){
+                        message.innerHTML=""
+                    },5000)
+                    form.reset()
+                })
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
     </body>
 </html>
