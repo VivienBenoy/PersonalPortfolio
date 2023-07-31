@@ -12,15 +12,15 @@
             <div class="container">
                 <nav>
                     <img src="" class="logo">
-                    <ul>
-                        <li>
-                            <a href="#">Home</a>
-                            <a href="#">About</a>
-                            <a href="#">Services</a>
-                            <a href="#">Portfolio</a>
-                            <a href="#">Contact</a>
-                        </li>
+                    <ul id="sidemenu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
                     </ul>
+                    <i class="fa-solid fa-bars" onclick="openmenu()"></i>
                 </nav>
                 <div class="header-text">
                     <p>Games Developer</p>
@@ -151,24 +151,28 @@
         <div class="row">
             <div class="contect-left">
                 <h1 class="sub-title">Contact Me</h1>
-                <p>contact@gmail.com</p>
-                <p>012345678</p>
+                <p><i class="fa-solid fa-paper-plane"></i>contact@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i>012345678</p>
                 <div class="social-icons">
                     <a href="#"><i class="fa-brands fa-linkedin"></i></a>
                     <a href="#"><i class="fa-brands fa-facebook"></i></a>
                     <a href="#"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#"><i class="fa-brands fa-twitter-square"></i></a>
                 </div>
+                <a href="#" download class="btn btn2">Download CV</a>
             </div>
             <div class="contect-right">
                 <form>
                     <input type="text" name="Name" placeholder="Your Name" required>
                     <input type="email" name="email" placeholder="Your Email" required>
                     <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="btn btn2">Submit</button>
                 </form>
             </div>
         </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright...........</p>
     </div>
 </div>
         
@@ -187,6 +191,16 @@
                 event.currentTarget.classList.add("active-link");
                 document.getElementById(tabname).classList.add("active-tab");
 
+            }
+        </script>
+        <script>
+            var sidemenu = document.getElementById("sidemenu");
+
+            function openmen(){
+                sidemenu.style.right="0";
+            }
+            function closemen(){
+                sidemenu.style.right="-200";
             }
         </script>
     </body>
